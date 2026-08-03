@@ -55,7 +55,7 @@ assets/screenshots/
 
 ## 👩‍💻 Author
 
-**Vaibhavi Samruddhi Sutar**
+**Vaibhavi  Sutar**
 
 GitHub:
 https://github.com/vaibhavi7029-a11y
