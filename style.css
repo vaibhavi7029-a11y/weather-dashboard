@@ -492,3 +492,228 @@ padding:20px;
 }
 
        }
+/* ===========================
+   SkyPulse Premium Effects
+===========================*/
+
+/* Floating Stars */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+    radial-gradient(circle,#ffffff 1px,transparent 1px),
+    radial-gradient(circle,#7dd3fc 1px,transparent 1px),
+    radial-gradient(circle,#ffffff 1px,transparent 1px);
+
+    background-size:120px 120px,180px 180px,250px 250px;
+
+    animation:starsMove 80s linear infinite;
+
+    opacity:.45;
+
+    pointer-events:none;
+}
+
+@keyframes starsMove{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-800px);
+}
+
+}
+
+/* Glow Around Weather Card */
+
+.weather-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.weather-card::before{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+
+height:250px;
+
+background:#3b82f6;
+
+filter:blur(120px);
+
+opacity:.25;
+
+left:-120px;
+
+top:-100px;
+
+animation:glow1 8s infinite alternate;
+
+}
+
+.weather-card::after{
+
+content:"";
+
+position:absolute;
+
+width:220px;
+
+height:220px;
+
+background:#9333ea;
+
+filter:blur(120px);
+
+opacity:.20;
+
+right:-120px;
+
+bottom:-120px;
+
+animation:glow2 9s infinite alternate;
+
+}
+
+@keyframes glow1{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(60px);
+}
+
+}
+
+@keyframes glow2{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-60px);
+}
+
+}
+
+/* Logo Animation */
+
+.logo{
+
+animation:logoFloat 5s ease-in-out infinite;
+
+}
+
+@keyframes logoFloat{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+/* Search Button Glow */
+
+.search-box button{
+
+box-shadow:
+0 0 20px rgba(59,130,246,.5);
+
+}
+
+.search-box button:hover{
+
+box-shadow:
+0 0 35px rgba(34,211,238,.8);
+
+}
+
+/* Temperature Glow */
+
+#temp{
+
+text-shadow:
+0 0 15px #60a5fa,
+0 0 40px #2563eb;
+
+}
+
+/* Card Shine */
+
+.card::after{
+
+content:"";
+
+position:absolute;
+
+top:-100%;
+
+left:-100%;
+
+width:60%;
+
+height:250%;
+
+background:rgba(255,255,255,.15);
+
+transform:rotate(25deg);
+
+transition:.8s;
+
+}
+
+.card:hover::after{
+
+left:150%;
+
+}
+
+/* Smooth Fade */
+
+.container{
+
+animation:fadePage 1s ease;
+
+}
+
+@keyframes fadePage{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+   }
