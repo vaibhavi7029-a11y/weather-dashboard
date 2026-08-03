@@ -1,56 +1,122 @@
 const apiKey = "49b10747e8a37e1ee8fd3faa5da0a195";
 
-async function getWeather() {
-    const city = document.getElementById("cityInput").value;
+const cityInput = document.getElementById("city");
+const searchBtn = document.getElementById("searchBtn");
 
-    if (city === "") {
-        alert("Please enter a city name");
+searchBtn.addEventListener("click", getWeather);
+
+cityInput.addEventListener("keypress", (e)=>{
+    if(e.key==="Enter"){
+        getWeather();
+    }
+});
+
+async function getWeather(){
+
+    const city = cityInput.value.trim();
+
+    if(city===""){
+        alert("Enter city name");
         return;
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    searchBtn.innerHTML="⏳";
 
-    try {
-        const response = await fetch(url);
+    try{
+
+        const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        );
+
         const data = await response.json();
 
-        if (data.cod != 200) {
-            alert(data.message);
+        if(data.cod!=200){
+
+            alert("City Not Found");
+
+            searchBtn.innerHTML="🔍";
+
             return;
         }
 
-        document.getElementById("cityName").innerText = data.name;
-        document.getElementById("temperature").innerText =
-            `${Math.round(data.main.temp)}°C`;
-        document.getElementById("description").innerText =
-            data.weather[0].description;
+        document.getElementById("temp").innerHTML=
+        Math.round(data.main.temp)+"°C";
 
-        document.getElementById("humidity").innerText =
-            `${data.main.humidity}%`;
+        document.getElementById("cityName").innerHTML=
+        data.name+", "+data.sys.country;
 
-        document.getElementById("wind").innerText =
-            `${data.wind.speed} m/s`;
+        document.getElementById("description").innerHTML=
+        data.weather[0].description;
 
-        document.getElementById("feelsLike").innerText =
-            `${Math.round(data.main.feels_like)}°C`;
+        document.getElementById("humidity").innerHTML=
+        data.main.humidity+"%";
 
-        document.getElementById("visibility").innerText =
-            `${data.visibility / 1000} km`;
+        document.getElementById("wind").innerHTML=
+        data.wind.speed+" m/s";
 
-        const sunrise = new Date(data.sys.sunrise * 1000);
-        const sunset = new Date(data.sys.sunset * 1000);
+        document.getElementById("feels").innerHTML=
+        Math.round(data.main.feels_like)+"°C";
 
-        document.getElementById("sunrise").innerText =
-            sunrise.toLocaleTimeString();
+        document.getElementById("visibility").innerHTML=
+        data.visibility/1000+" km";
 
-        document.getElementById("sunset").innerText =
-            sunset.toLocaleTimeString();
+        document.getElementById("sunrise").innerHTML=
+        new Date(data.sys.sunrise*1000)
+        .toLocaleTimeString();
 
-        document.getElementById("weatherIcon").src =
-            `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+        document.getElementById("sunset").innerHTML=
+        new Date(data.sys.sunset*1000)
+        .toLocaleTimeString();
 
-    } catch (error) {
-        alert("Something went wrong!");
-        console.log(error);
+        document.getElementById("icon").src=
+        `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+
+        changeBackground(data.weather[0].main);
+
     }
-                                                 }
+
+    catch(error){
+
+        alert("Something went wrong");
+
+        console.log(error);
+
+    }
+
+    searchBtn.innerHTML="🔍";
+
+}
+
+function changeBackground(weather){
+
+    weather=weather.toLowerCase();
+
+    if(weather.includes("cloud")){
+
+        document.body.style.background=
+        "linear-gradient(135deg,#374151,#1e293b,#0f172a)";
+
+    }
+
+    else if(weather.includes("rain")){
+
+        document.body.style.background=
+        "linear-gradient(135deg,#1e3a8a,#0f172a,#020617)";
+
+    }
+
+    else if(weather.includes("clear")){
+
+        document.body.style.background=
+        "linear-gradient(135deg,#2563eb,#0ea5e9,#1e40af)";
+
+    }
+
+    else if(weather.includes("snow")){
+
+        document.body.style.background=
+        "linear-gradient(135deg,#cbd5e1,#94a3b8,#64748b)";
+
+    }
+
+}
