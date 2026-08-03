@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="glass-card">
+
+        <h1>🌤 Weather Dashboard</h1>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Search any city..."
+            >
+
+            <button onclick="getWeather()">
+                Search
+            </button>
+
+        </div>
+
+        <div class="weather-main">
+
+            <h2 id="cityName">City Name</h2>
+
+            <img
+                id="weatherIcon"
+                src=""
+                alt=""
+            >
+
+            <h1 id="temperature">--°C</h1>
+
+            <h3 id="description">
+                Weather Description
+            </h3>
+
+        </div>
+
+        <div class="weather-grid">
+
+            <div class="card">
+                <h3>💧 Humidity</h3>
+                <p id="humidity">--%</p>
+            </div>
+
+            <div class="card">
+                <h3>💨 Wind</h3>
+                <p id="wind">-- km/h</p>
+            </div>
+
+            <div class="card">
+                <h3>🌡 Feels Like</h3>
+                <p id="feelsLike">--°C</p>
+            </div>
+
+            <div class="card">
+                <h3>👁 Visibility</h3>
+                <p id="visibility">-- km</p>
+            </div>
+
+            <div class="card">
+                <h3>🌅 Sunrise</h3>
+                <p id="sunrise">--</p>
+            </div>
+
+            <div class="card">
+                <h3>🌇 Sunset</h3>
+                <p id="sunset">--</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+              </html>
