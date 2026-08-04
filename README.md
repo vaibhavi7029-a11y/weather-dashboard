@@ -58,6 +58,6 @@ assets/screenshots/
 **Vaibhavi Sutar**
 
 GitHub:
-https://github.com/vaibhavi7029-a11y
+https://github.com/vaibhavi7029-a11y.github.io/weather-dashboard/
 
 --
