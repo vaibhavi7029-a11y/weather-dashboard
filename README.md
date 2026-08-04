@@ -34,17 +34,6 @@ weather-dashboard/
     ├── icons/
     ├── backgrounds/
     └── screenshots/
-```
-
-## 🚀 Live Demo
-
-Coming Soon...
-
-## 📸 Screenshot
-
-Add your project screenshot inside:
-
-assets/screenshots/
 
 ## ⚙️ Installation
 
